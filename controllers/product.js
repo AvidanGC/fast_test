@@ -22,7 +22,11 @@ module.exports = {
         try {
             let sku = req.params.sku ;
             const prod = Products.find(el => el.sku === Number(sku) );
-            res.status(200).json({"name":prod.name,"total": prod.stock});
+            if(typeof prod !== 'undefined' ){
+                res.status(200).json({"name":prod.name,"total": prod.stock, "status":"OK"});
+            }else{
+                res.status(200).json({"status":"error","message": "El producto No Existe!"});
+            }
 
         } catch (error) {
             res.status(500).send({

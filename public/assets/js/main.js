@@ -12,22 +12,36 @@ axios.get(`${path}/api/inventory/stock_total`)
    //get Inventory by prodcut         
 document.getElementById("getStock").onclick = function(e) {
     let sku = document.getElementById('sku').value;
-    getInventoryByProduct(sku);
+    
+    if(sku != ""){
+        getInventoryByProduct(sku);
+    }
 };
     
 
 function getInventoryByProduct(sku){
         data = JSON.stringify({"sku":sku});
-        axios.get(`${path}/api/inventory/stock_by_product/${sku}`)
+        const alert = document.getElementById('alert');
+        alert.classList.add('invisible');
+        const card = document.getElementById('info_prod');
+        card.classList.add('invisible');
+
+        axios.get(`http://localhost:3000/api/inventory/stock_by_product/${sku}`)
           .then( response => {
-            let product = response.data;
-            let total = document.getElementById('total_sku');
-            let name = document.getElementById('nameProduct');
-            total.innerHTML = product.total;
-            name.innerHTML = product.name;
-            const card = document.getElementById('info_prod');
-            card.classList.remove('invisible');
-            document.getElementById('sku').value = '';
+              
+          if(Object.keys(response.data).length > 0 && response.data.status !== "error"){
+                let product = response.data;
+                let total = document.getElementById('total_sku');
+                let name = document.getElementById('nameProduct');
+                total.innerHTML = product.total;
+                name.innerHTML = product.name;
+                card.classList.remove('invisible');
+            
+          }else{
+            alert.classList.remove('invisible');
+            alert.innerHTML = response.data.message;
+          }
+          document.getElementById('sku').value = '';
             
           }).catch(e => {
             console.log(e);
