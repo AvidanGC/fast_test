@@ -26,7 +26,7 @@ function getInventoryByProduct(sku){
         const card = document.getElementById('info_prod');
         card.classList.add('invisible');
 
-        axios.get(`http://localhost:3000/api/inventory/stock_by_product/${sku}`)
+        axios.get(`${path}/api/inventory/stock_by_product/${sku}`)
           .then( response => {
               
           if(Object.keys(response.data).length > 0 && response.data.status !== "error"){
