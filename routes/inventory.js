@@ -7,6 +7,6 @@ const inventory = require('../controllers/product.js');
 router.get('/api/inventory/stock_total', inventory.totalInvenorty);
 
 //Inventory by product
-router.get('/api/inventory/stock_by_product', inventory.by_product);
+router.get('/api/inventory/stock_by_product/:sku', inventory.by_product);
 
 module.exports = router;

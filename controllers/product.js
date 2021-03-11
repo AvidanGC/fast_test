@@ -20,9 +20,9 @@ module.exports = {
     },
     by_product : (req,res,next) => {
         try {
-            let sku = req.body.sku ;
-            const prod = Products.find(el => el.sku === sku );
-            res.status(200).json({"total": prod.stock});
+            let sku = req.params.sku ;
+            const prod = Products.find(el => el.sku === Number(sku) );
+            res.status(200).json({"name":prod.name,"total": prod.stock});
 
         } catch (error) {
             res.status(500).send({

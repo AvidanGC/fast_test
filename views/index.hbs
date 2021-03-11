@@ -1,0 +1,20 @@
+<div class="jumbotron mt-4">
+    <h1 class="display-4">Inventario Total:  <label id="total_products" ></label> </h1> 
+    <hr class="my-4">    
+   <form>
+        <div class="row">
+            <div class="col-4">
+                <p class="lead">Buscar por Producto (sku): <input id="sku" name="sku" type="text" class="form-control" placeholder="Codigo">
+                </p>
+                <button id="getStock" type="button" class="btn btn-primary">Buscar</button>
+            </div>
+            <div id="info_prod" class="card invisible" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Producto</h5>
+                    <p class="card-text" id="nameProduct" ></p>
+                    <p class="card-text" >Total: <label id="total_sku" for="total"></label></p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

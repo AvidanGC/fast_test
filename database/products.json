@@ -1,17 +1,17 @@
 [
     {
         "sku": 12301,
-        "name": "Iphone 11",
+        "name": "Iphone 11 pro MAX",
         "stock": 15
     },
     {
         "sku": 12302,
-        "name": "Iphone 12",
+        "name": "Iphone 12 PRO MAX",
         "stock": 20
     },
     {
         "sku": 12303,
-        "name": "Iphone 8",
+        "name": "Iphone 8 PLUS",
         "stock": 5
     } 
 ]

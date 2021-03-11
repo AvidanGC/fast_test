@@ -1,21 +1,39 @@
 const express = require('express');
-const morgan = require('morgan');
+const path = require('path');
+const exphbs = require('express-handlebars');
 const cors = require('cors');
- 
+const morgan = require('morgan');
+
+
+
 //Initializations...
 const app = express();
 
 //Settings
 app.set('port',process.env.PORT|| 3000);
+app.set('views',path.join(__dirname,'views'));
+app.engine('.hbs',exphbs({
+    defaultLayout:'main' ,
+    layoutsDir: path.join(app.get('views'),'layouts'),
+    partialsDir: path.join(app.get('views'),'partials'),
+    extname:'.hbs',
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
+    }
+}));
+app.set('view engine', '.hbs');
 
 //Middlewares //funciones q se ejecutan antes de entrar a las rutas.
-app.use(morgan('dev'));
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:false}));
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());//validacion de intercambio de datos JSON. antes de llegar a las router.
-app.use(express.urlencoded({extended:true}));
 
 app.get('/', (req, res) => {
-    res.send('-- Welcome to Services GC! --');
+    res.render('index');
+  //  res.send('-- Welcome to Services GC! --');
   });
 
 //route
