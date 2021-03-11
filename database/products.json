@@ -1,0 +1,17 @@
+[
+    {
+        "sku": 12301,
+        "name": "Iphone 11",
+        "stock": 15
+    },
+    {
+        "sku": 12302,
+        "name": "Iphone 12",
+        "stock": 20
+    },
+    {
+        "sku": 12303,
+        "name": "Iphone 8",
+        "stock": 5
+    } 
+]
